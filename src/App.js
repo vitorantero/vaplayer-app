@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import * as React from 'react';
 import './App.css';
+import Filters from './Components/Filters'
+import Data from './Components/Data';
+import Player from './Components/Player';
+import { useState } from 'react';
 
 function App() {
+  const [isVideo, setVideo] = useState({
+    videoName: Data[0].videoName,
+    videoSrc: Data[0].videoSrc,
+    description: Data[0].description,
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header className='header__section'>
+        <p className='header__text'>StudyFlix</p>
       </header>
-    </div>
+      
+      <div className='Container'>
+        <div className='playerDiv'>
+        
+          <Player Data={isVideo}/>
+          <Filters setVideo={setVideo}/>
+          
+        </div>
+      </div>
+      
+    </>
   );
 }
 
-export default App;
+export default App
